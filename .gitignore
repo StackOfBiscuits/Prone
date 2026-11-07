@@ -1,3 +1,4 @@
 .vscode
 .idea
 filesystem/fatp.db
+filesystem/hard_disk
