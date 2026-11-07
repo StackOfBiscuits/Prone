@@ -6,8 +6,7 @@ def write_to_ram(contents):
     new_mem_addr = 0
     current_ram_maddr = initialise_ram.memory_addresses_occupied
 
-    ascii_text = contents.encode("ascii", errors="ignore").decode("ascii")
-    hex_value = ascii_text.encode("utf-8").hex()
+    hex_value = contents.encode("utf-8").hex()
 
     if current_ram_maddr: 
         for i in range(1, len(current_ram_maddr)):
