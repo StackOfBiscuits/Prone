@@ -2,6 +2,7 @@
 
 import sqlite3
 import os
+from datetime import datetime
 
 conn = sqlite3.connect("fatp.db")
 
@@ -45,10 +46,13 @@ def get_file_entry(filename):
 
 
 def create_file(filename):
+    now = datetime.now()
+    formatted = now.strftime("%d/%m/%Y %H:%M:%S")
+
     cursor.execute("""
-        INSERT INTO FATP (filename, read, write, run)
-        VALUES (?, 1, 1, 0)
-    """, (filename,))
+        INSERT INTO FATP (filename, read, write, run, creation_date, last_modified)
+        VALUES (?, 1, 1, 1, ?, ?)
+    """, (filename, formatted, formatted))
 
     conn.commit()
 
@@ -65,5 +69,7 @@ def write_to_file(filename):
     # Check write permission
     if file[3] == 0:
         raise PermissionError(f"Write access denied: {filename}")
+
+    # Add code for writing
 
     return True
