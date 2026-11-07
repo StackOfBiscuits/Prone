@@ -1,6 +1,7 @@
 # File Allocation Table Prone
 
 import sqlite3
+import os
 
 conn = sqlite3.connect("fatp.db")
 
@@ -19,6 +20,10 @@ cursor.execute("""
 """)
 
 conn.commit()
+
+if not os.path.exists("hard_disk"):
+    fh = open("hard_disk", "w+")
+    fh.close()
 
 
 def get_file_entry(filename):
