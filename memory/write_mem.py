@@ -15,10 +15,10 @@ def write_to_ram(contents):
         if new_mem_addr == 0:
             new_mem_addr = current_ram_maddr[-1] + 1
 
-        formatted_address = f"0x{new_mem_addr:08X}"
+        formatted_address = f"{new_mem_addr:08X}"
 
 
-    formatted_address = f"0x{new_mem_addr:08X}"
+    formatted_address = f"{new_mem_addr:08X}"
     fh = open("ram", "a")
     fh.write(f"{formatted_address}{hex_value}\n")
     fh.close()
